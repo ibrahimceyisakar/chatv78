@@ -143,3 +143,7 @@ CHANNEL_LAYERS = {
 # Add login logout urls
 LOGIN_REDIRECT_URL = "messages"
 LOGOUT_REDIRECT_URL = "login-user"
+
+
+# To Fix Heroku CSRF Error
+CSRF_TRUSTED_ORIGINS = ["https://chat78.herokuapp.com"]
