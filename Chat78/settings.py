@@ -145,7 +145,7 @@ REDIS_HOST_DICT = [
         "address": f"rediss://{REDIS_HOST}:{REDIS_PORT}",  # don't miss the 'rediss'!
         # "db": REDIS_DB,
         "password": REDIS_PASSWORD,
-        "ssl": new_context,
+        # "ssl": new_context,
     }
 ]
 
