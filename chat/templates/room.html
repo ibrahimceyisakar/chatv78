@@ -14,12 +14,13 @@
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
         const chatSocket = new WebSocket(
-            'ws://'
+            (window.location.protocol === 'https:' ? 'wss' : 'ws') + '://'
             + window.location.host
             + '/messages/'
             + roomName
             + '/'
         );
+        (window.location.protocol === 'https:' ? 'wss' : 'ws') + '://'
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
