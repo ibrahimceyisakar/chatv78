@@ -146,6 +146,8 @@ REDIS_HOST_DICT = [
         # "db": REDIS_DB,
         "password": REDIS_PASSWORD,
         # "ssl": new_context,
+        "ssl": True,
+        "ssl_cert_reqs": None,
     }
 ]
 
