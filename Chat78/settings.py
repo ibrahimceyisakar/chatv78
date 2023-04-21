@@ -145,6 +145,10 @@ REDIS_HOST_DICT = [
     }
 ]
 
+import os
+import redis
+
+r = redis.from_url(os.environ.get("REDIS_URL"))
 
 CHANNEL_LAYERS = {
     "default": {
@@ -159,7 +163,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": REDIS_HOST_DICT,
+            "hosts": r,
             "symmetric_encryption_keys": [SECRET_KEY],
         },
     },
