@@ -149,7 +149,6 @@ CHANNEL_LAYERS = {
             "hosts": [
                 "rediss://:p83a9c94f1263b340ef608ada5e4a6e39ed55dfff575bba2a1b2795d20e6021c4@ec2-34-254-110-140.eu-west-1.compute.amazonaws.com:28150"
             ],
-            "symmetric_encryption_keys": [SECRET_KEY],
         },
     },
 }
