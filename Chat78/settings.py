@@ -134,19 +134,13 @@ CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}
 ASGI_APPLICATION = "Chat78.asgi.application"
 
 
-import ssl
-
-new_context = ssl.SSLContext()  # this sets the verify_mode to 'CERT_NONE'
 REDIS_HOST = "ec2-34-254-110-140.eu-west-1.compute.amazonaws.com"
 REDIS_PORT = "28150"
 REDIS_PASSWORD = "p83a9c94f1263b340ef608ada5e4a6e39ed55dfff575bba2a1b2795d20e6021c4"
 REDIS_HOST_DICT = [
     {
         "address": f"rediss://{REDIS_HOST}:{REDIS_PORT}",  # don't miss the 'rediss'!
-        # "db": REDIS_DB,
         "password": REDIS_PASSWORD,
-        # "ssl": new_context,
-        # "ssl": True,
         "ssl_cert_reqs": None,
     }
 ]
