@@ -179,7 +179,7 @@ if os.environ.get("REDIS_TLS_URL"):
             "address": f"rediss://{REDIS_HOST}:{REDIS_PORT}",  # don't miss the 'rediss'!
             "db": 0,
             "password": "p83a9c94f1263b340ef608ada5e4a6e39ed55dfff575bba2a1b2795d20e6021c4",
-            "ssl": new_context,
+            "ssl_cert_reqes": None,
         }
     ]
 else:
