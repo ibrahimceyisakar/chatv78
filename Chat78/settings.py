@@ -177,6 +177,7 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
             "hosts": host,
+            "ssl_cert_reqs": None,
             # "symmetric_encryption_keys": [SECRET_KEY],
         },
     },
