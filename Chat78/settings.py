@@ -145,33 +145,39 @@ REDIS_HOST_DICT = [
     }
 ]
 
-import os
-import redis
 
-r = redis.from_url(os.environ.get("REDIS_URL"))
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("0.0.0.0", 6388)],
-        },
-    },
-}
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": r,
-            "symmetric_encryption_keys": [SECRET_KEY],
-        },
-    },
-}
 # Add login logout urls
 LOGIN_REDIRECT_URL = "messages"
 LOGOUT_REDIRECT_URL = "login-user"
 
 
 # To Fix Heroku CSRF Error
-CSRF_TRUSTED_ORIGINS = ["https://chat78.herokuapp.com"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://chat78.herokuapp.com",
+    "http://chat78.herokuapp.com",
+    "wss://chat78.herokuapp.com",
+    "ws://chat78.herokuapp.com",
+    # "chat78.herokuapp.com",
+]
+
+import os
+import redis
+
+redis_host = redis.from_url(os.environ.get("REDIS_TLS_URL", "redis://localhost:6399/0"))
+
+if os.environ.get("REDIS_TLS_URL"):
+    host = [
+        "rediss://:p83a9c94f1263b340ef608ada5e4a6e39ed55dfff575bba2a1b2795d20e6021c4@ec2-34-254-110-140.eu-west-1.compute.amazonaws.com:28150/0"
+    ]
+else:
+    host = [("0.0.0.0", 6399)]
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": host,
+            # "symmetric_encryption_keys": [SECRET_KEY],
+        },
+    },
+}
